@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alan P G | Full-Stack & Security Engineer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+      :root {
+        --primary-bg: #0a192f;
+        --secondary-bg: #112240;
+        --accent-color: #64ffda;
+        --text-main: #ccd6f6;
+        --text-dim: #8892b0;
+        --white: #e6f1ff;
+        --nav-height: 80px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+      body {
+        background-color: var(--primary-bg);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10%;
+        height: var(--nav-height);
+        background: rgba(10, 25, 47, 0.85);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: 5px 10px;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      .nav-links li {
+        margin-left: 30px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--white);
+        font-size: 0.9rem;
+        font-family: monospace;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      /* Hero */
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 10%;
+        background: radial-gradient(
+          circle at 80% 20%,
+          rgba(100, 255, 218, 0.05),
+          transparent
+        );
+      }
+      .hero-pre {
+        color: var(--accent-color);
+        font-family: monospace;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      .hero-name {
+        font-size: clamp(40px, 8vw, 80px);
+        color: var(--white);
+      }
+      .hero-title {
+        font-size: clamp(30px, 6vw, 60px);
+        color: var(--text-dim);
+        margin-bottom: 20px;
+      }
+      .hero-desc {
+        max-width: 600px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+      }
+
+      /* General Sections */
+      section {
+        padding: 100px 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h2 {
+        font-size: 2rem;
+        color: var(--white);
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 200px;
+        background: var(--secondary-bg);
+        margin-left: 20px;
+      }
+
+      /* Grid UI */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .skill-box {
+        background: var(--secondary-bg);
+        padding: 30px;
+        border-radius: 4px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+        position: relative;
+      }
+      .skill-box:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-10px);
+      }
+      .skill-box i {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+      }
+
+      /* Impact Stats Bar */
+      .stats-bar {
+        display: flex;
+        justify-content: space-around;
+        background: var(--secondary-bg);
+        padding: 40px 20px;
+        border-radius: 8px;
+        margin-top: 50px;
+        text-align: center;
+        border-bottom: 3px solid var(--accent-color);
+      }
+      .stat-item h3 {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+      }
+      .stat-item p {
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
+
+      /* Experience Cards */
+      .exp-card {
+        background: var(--secondary-bg);
+        padding: 30px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        border-left: 4px solid var(--accent-color);
+        transition: 0.3s;
+      }
+      .exp-card:hover {
+        background: #1d3359;
+        transform: translateX(10px);
+      }
+      .company {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+      .date {
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
+
+      /* Buttons */
+      .btn {
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 18px 34px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        transition: 0.3s;
+        font-family: monospace;
+        background: transparent;
+      }
+      .btn:hover {
+        background: rgba(100, 255, 218, 0.1);
+        box-shadow: 0 10px 20px -10px var(--accent-color);
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-dim);
+        font-family: monospace;
+      }
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 5%;
+        }
+        .nav-links {
+          display: none;
+        }
+        .stats-bar {
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="logo">A.</div>
+      <ul class="nav-links">
+        <li><a href="#experience">/Experience</a></li>
+        <li><a href="#projects">/Projects</a></li>
+        <li><a href="#skills">/Arsenal</a></li>
+        <li><a href="#contact">/Contact</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <div class="reveal">
+        <p class="hero-pre">Hi, my name is</p>
+        <h1 class="hero-name">Alan P G.</h1>
+        <h2 class="hero-title">I build & secure national-scale systems.</h2>
+        <p class="hero-desc">
+          Full-Stack Developer with 3+ years of experience at C-DAC. I
+          specialize in creating robust web architectures while maintaining a
+          heavy focus on Ethical Hacking and Cybersecurity for governmental
+          sectors.
+        </p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+    </header>
+
+    <section id="impact">
+      <div class="stats-bar reveal">
+        <div class="stat-item">
+          <h3>28+</h3>
+          <p>Indian States Served (ERSS)</p>
+        </div>
+        <div class="stat-item">
+          <h3>25,000+</h3>
+          <p>Annual Candidates Managed</p>
+        </div>
+        <div class="stat-item">
+          <h3>3+</h3>
+          <p>Years at C-DAC</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="reveal">Professional Journey</h2>
+
+      <div class="exp-card reveal">
+        <div
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div>
+            <h3>Project Engineer</h3>
+            <span class="company"
+              >C-DAC, Chennai | Ministry of Defence (MoD)</span
+            >
+          </div>
+          <span class="date">2024 - Present</span>
+        </div>
+        <ul style="margin-top: 15px; margin-left: 20px">
+          <li>Leading Secure SDLC for the Digital DGQA portal (MoD).</li>
+          <li>
+            Conducting deep-dive Vulnerability Remediation & RBAC
+            implementation.
+          </li>
+          <li>
+            Bridging high-performance React.js development with Ethical Hacking
+            standards.
+          </li>
+        </ul>
+      </div>
+
+      <div class="exp-card reveal">
+        <div
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div>
+            <h3>Project Associate</h3>
+            <span class="company"
+              >C-DAC, Trivandrum | Ministry of Home Affairs (MHA)</span
+            >
+          </div>
+          <span class="date">2023 - 2024</span>
+        </div>
+        <ul style="margin-top: 15px; margin-left: 20px">
+          <li>Headed frontend for India 112 (ERSS) across 28+ states.</li>
+          <li>
+            Engineered real-time emergency dispatch systems using JWT & REST
+            APIs.
+          </li>
+          <li>
+            Optimized high-availability infrastructure using Apache and Nginx.
+          </li>
+        </ul>
+      </div>
+
+      <div class="exp-card reveal">
+        <div
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div>
+            <h3>Graduate Apprentice</h3>
+            <span class="company">KELTRON, Trivandrum</span>
+          </div>
+          <span class="date">2022 - 2023</span>
+        </div>
+        <p style="margin-top: 10px">
+          Customized enterprise ERP solutions and full-stack development using
+          Laravel (PHP).
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" style="background: var(--secondary-bg)">
+      <h2 class="reveal">Mission-Critical Portals</h2>
+      <div class="skills-container reveal">
+        <div
+          class="skill-box"
+          style="text-align: left; border-left: 4px solid #ff4d4d"
+        >
+          <h3>Digital DGQA</h3>
+          <p
+            style="
+              color: var(--accent-color);
+              font-family: monospace;
+              font-size: 0.8rem;
+            "
+          >
+            MINISTRY OF DEFENCE
+          </p>
+          <p style="margin-top: 10px">
+            A high-security portal integrating threat modeling and secure coding
+            standards to protect Defence digital assets.
+          </p>
+        </div>
+        <div
+          class="skill-box"
+          style="text-align: left; border-left: 4px solid var(--accent-color)"
+        >
+          <h3>ERSS - Pan India 112</h3>
+          <p
+            style="
+              color: var(--accent-color);
+              font-family: monospace;
+              font-size: 0.8rem;
+            "
+          >
+            MINISTRY OF HOME AFFAIRS
+          </p>
+          <p style="margin-top: 10px">
+            National emergency response system requiring 99.9% uptime and
+            real-time operational statistics for first responders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="reveal">Technical & Security Arsenal</h2>
+      <div class="skills-container reveal">
+        <div class="skill-box">
+          <i class="fab fa-react"></i>
+          <h3>Web Dev</h3>
+          <p>React.js, Next.js, Node.js, Laravel, Python</p>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-user-secret"></i>
+          <h3>Security</h3>
+          <p>Burp Suite, Nmap, Nessus, Wireshark, Splunk, Wazuh</p>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Methodology</h3>
+          <p>Secure SDLC, RBAC, OWASP Top 10</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" style="background: var(--secondary-bg)">
+      <h2 class="reveal">Credentials</h2>
+      <div class="skills-container reveal">
+        <div class="skill-box">
+          <h3>Ethical Hacking</h3>
+          <p>Cisco Networking Academy</p>
+        </div>
+        <div class="skill-box">
+          <h3>Web Application Security</h3>
+          <p>Testing & Remediation Certs</p>
+        </div>
+        <div class="skill-box">
+          <h3>Software Security</h3>
+          <p>Testing & Remediation Certs</p>
+        </div>
+        <div class="skill-box">
+          <h3>B.E. CSE</h3>
+          <p>CGPA: 8.3/10</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div style="text-align: center" class="reveal">
+        <h2>Get In Touch</h2>
+        <p style="margin-bottom: 30px">
+          Based in Kerala, India. Open to security-focused development roles.
+        </p>
+        <a href="mailto:alangladis1@gmail.com" class="btn">Send an Email</a>
+        <p
+          style="
+            margin-top: 25px;
+            font-family: monospace;
+            color: var(--accent-color);
+          "
+        >
+          +91 7356872611
+        </p>
+      </div>
+    </section>
+
+    <footer><p>Alan P G &bull; 2026 &bull; Secure SDLC Advocate</p></footer>
+
+    <script>
+      const sr = ScrollReveal({
+        origin: "bottom",
+        distance: "60px",
+        duration: 1000,
+        delay: 200,
+        reset: false,
+      });
+      sr.reveal(".reveal", { interval: 100 });
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("navbar");
+        nav.style.height = window.scrollY > 50 ? "70px" : "80px";
+        nav.style.background =
+          window.scrollY > 50
+            ? "rgba(10, 25, 47, 0.95)"
+            : "rgba(10, 25, 47, 0.85)";
+      });
+    </script>
+  </body>
+</html>
