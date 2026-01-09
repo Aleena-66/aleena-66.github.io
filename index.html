@@ -3,478 +3,760 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alan P G | Full-Stack & Security Engineer</title>
+    <title>Aleena Joseph | Full-Stack Software Engineer</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
     />
     <script src="https://unpkg.com/scrollreveal"></script>
-
     <style>
       :root {
-        --primary-bg: #0a192f;
-        --secondary-bg: #112240;
-        --accent-color: #64ffda;
-        --text-main: #ccd6f6;
-        --text-dim: #8892b0;
-        --white: #e6f1ff;
-        --nav-height: 80px;
-      }
-
-      html {
-        scroll-behavior: smooth;
+        --bg-dark: #0f0c13;
+        --bg-panel: rgba(26, 22, 37, 0.7);
+        --accent-glow: #d4a5ff;
+        --accent-soft: #a18cd1;
+        --accent-pink: #fbc2eb;
+        --text-bright: #f3f0ff;
+        --text-muted: #b0a7c0;
+        --gradient-fem: linear-gradient(135deg, #d4a5ff 0%, #fbc2eb 100%);
+        --glass-border: rgba(212, 165, 255, 0.2);
       }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
+        font-family: "Inter", sans-serif;
+        cursor: none; /* Hide default cursor for custom effect */
       }
       body {
-        background-color: var(--primary-bg);
-        color: var(--text-main);
-        line-height: 1.6;
+        background-color: var(--bg-dark);
+        color: var(--text-bright);
+        line-height: 1.7;
         overflow-x: hidden;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M0,500 Q250,300 500,500 T1000,500 Q750,700 500,500 T0,500" fill="none" stroke="%23d4a5ff" stroke-width="1" opacity="0.03"/><path d="M100,600 Q350,400 600,600 T1000,600" fill="none" stroke="%23fbc2eb" stroke-width="1" opacity="0.03"/></svg>');
+        background-repeat: repeat;
+        background-size: 800px;
       }
 
-      /* Navigation */
+      /* Custom Cursor & Trail */
+      #custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          circle,
+          #fbc2eb 0%,
+          #d4a5ff 70%,
+          transparent 100%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        mix-blend-mode: screen;
+        opacity: 0.8;
+        transition: transform 0.1s ease;
+        transform: translate(-50%, -50%);
+      }
+      .trail-particle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: var(--accent-pink);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        opacity: 0.6;
+        box-shadow: 0 0 8px #fbc2eb;
+        animation: fadeOut 1s ease forwards;
+      }
+      @keyframes fadeOut {
+        0% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0);
+        }
+      }
+
+      /* Enhanced Glow Blobs */
+      .glow-blob {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(251, 194, 235, 0.15) 0%,
+          transparent 70%
+        );
+        z-index: -1;
+        border-radius: 50%;
+        filter: blur(40px);
+      }
+      .glow-blob:nth-child(1) {
+        top: 10%;
+        right: -5%;
+      }
+      .glow-blob:nth-child(2) {
+        bottom: 20%;
+        left: -10%;
+      }
+      .glow-blob:nth-child(3) {
+        top: 15%;
+        left: 10%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 165, 255, 0.15) 0%,
+          transparent 70%
+        );
+      }
+      .glow-blob:nth-child(4) {
+        bottom: 10%;
+        right: 15%;
+      }
+
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 10%;
-        height: var(--nav-height);
-        background: rgba(10, 25, 47, 0.85);
+        padding: 0 8%;
+        height: 90px;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
-        backdrop-filter: blur(10px);
-        transition: 0.3s;
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(212, 165, 255, 0.1);
       }
       .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--accent-color);
-        border: 2px solid var(--accent-color);
-        padding: 5px 10px;
-      }
-      .nav-links {
-        display: flex;
-        list-style: none;
-      }
-      .nav-links li {
-        margin-left: 30px;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: var(--white);
-        font-size: 0.9rem;
-        font-family: monospace;
-        transition: 0.3s;
-      }
-      .nav-links a:hover {
-        color: var(--accent-color);
+        font-size: 1.6rem;
+        font-weight: 800;
+        background: var(--gradient-fem);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
-      /* Hero */
       header {
         height: 100vh;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
         padding: 0 10%;
-        background: radial-gradient(
-          circle at 80% 20%,
-          rgba(100, 255, 218, 0.05),
-          transparent
-        );
+        position: relative;
+        overflow: hidden;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23d4a5ff" opacity="0.2"/></svg>');
       }
-      .hero-pre {
-        color: var(--accent-color);
+
+      /* Delicate floating petals */
+      .petal {
+        position: absolute;
+        width: 90px;
+        opacity: 0.08;
+        pointer-events: none;
+        animation: float 25s infinite linear;
+      }
+      .petal:nth-child(5) {
+        top: 20%;
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .petal:nth-child(6) {
+        top: 50%;
+        right: 10%;
+        animation-delay: 7s;
+        width: 110px;
+      }
+      .petal:nth-child(7) {
+        bottom: 25%;
+        left: 15%;
+        animation-delay: 14s;
+        width: 80px;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.08;
+        }
+        90% {
+          opacity: 0.08;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+      .hero-tag {
+        color: var(--accent-glow);
         font-family: monospace;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        display: block;
       }
       .hero-name {
-        font-size: clamp(40px, 8vw, 80px);
-        color: var(--white);
-      }
-      .hero-title {
-        font-size: clamp(30px, 6vw, 60px);
-        color: var(--text-dim);
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 900;
+        line-height: 1;
         margin-bottom: 20px;
+        font-family: "Playfair Display", serif;
       }
-      .hero-desc {
-        max-width: 600px;
-        color: var(--text-dim);
-        font-size: 1.1rem;
-        margin-bottom: 40px;
+      .hero-sub {
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        margin-bottom: 35px;
       }
 
-      /* General Sections */
-      section {
-        padding: 100px 10%;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      h2 {
-        font-size: 2rem;
-        color: var(--white);
-        margin-bottom: 40px;
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
         display: flex;
         align-items: center;
+        gap: 20px;
+        font-family: "Playfair Display", serif;
+        padding: 0 10%;
       }
-      h2::after {
+      .section-title::after {
         content: "";
-        display: block;
-        height: 1px;
-        width: 200px;
-        background: var(--secondary-bg);
-        margin-left: 20px;
+        height: 2px;
+        flex-grow: 1;
+        background: linear-gradient(to right, var(--accent-pink), transparent);
+      }
+      .accent-text {
+        background: var(--gradient-fem);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
-      /* Grid UI */
-      .skills-container {
+      /* Bento Grid */
+      .bento-container {
+        padding: 100px 10%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 200px;
         gap: 20px;
       }
-      .skill-box {
-        background: var(--secondary-bg);
-        padding: 30px;
-        border-radius: 4px;
-        transition: 0.3s;
-        border: 1px solid transparent;
+      .bento-item {
+        background: var(--bg-panel);
+        border: 1px solid var(--glass-border);
+        border-radius: 40px;
+        padding: 35px;
         position: relative;
+        overflow: hidden;
+        transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(212, 165, 255, 0.05);
       }
-      .skill-box:hover {
-        border-color: var(--accent-color);
-        transform: translateY(-10px);
+      .bento-item:hover {
+        background: rgba(212, 165, 255, 0.08);
+        transform: translateY(-10px) scale(1.03);
+        border-color: var(--accent-glow);
+        box-shadow: 0 20px 40px rgba(251, 194, 235, 0.2);
       }
-      .skill-box i {
+      .bento-item i {
         font-size: 2.5rem;
-        color: var(--accent-color);
+        background: var(--gradient-fem);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .project-status {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: rgba(212, 165, 255, 0.1);
+        color: var(--accent-glow);
+        border: 1px solid var(--glass-border);
+      }
+      .large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .wide {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .tall {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+      .bento-item h3 {
+        font-size: 1.5rem;
         margin-bottom: 15px;
       }
+      .bento-item p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      .stat-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 10px;
+        background: rgba(212, 165, 255, 0.1);
+        color: var(--accent-glow);
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
 
-      /* Impact Stats Bar */
-      .stats-bar {
+      /* Experience Timeline */
+      .exp-box {
+        border-left: 2px solid var(--accent-soft);
+        padding-left: 30px;
+        margin-left: 10px;
+      }
+      .exp-item {
+        position: relative;
+        margin-bottom: 60px;
+      }
+      .exp-item::before {
+        content: "";
+        position: absolute;
+        left: -41px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--bg-dark);
+        border: 2px solid var(--accent-glow);
+      }
+      .role-head {
         display: flex;
-        justify-content: space-around;
-        background: var(--secondary-bg);
-        padding: 40px 20px;
-        border-radius: 8px;
-        margin-top: 50px;
-        text-align: center;
-        border-bottom: 3px solid var(--accent-color);
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
       }
-      .stat-item h3 {
-        font-size: 2.5rem;
-        color: var(--accent-color);
-      }
-      .stat-item p {
-        font-family: monospace;
-        font-size: 0.9rem;
-        color: var(--text-dim);
+      .badge {
+        background: rgba(212, 165, 255, 0.1);
+        color: var(--accent-glow);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
       }
 
-      /* Experience Cards */
-      .exp-card {
-        background: var(--secondary-bg);
-        padding: 30px;
-        border-radius: 4px;
-        margin-bottom: 30px;
-        border-left: 4px solid var(--accent-color);
-        transition: 0.3s;
+      /* Skill Pills */
+      .skill-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
       }
-      .exp-card:hover {
-        background: #1d3359;
-        transform: translateX(10px);
-      }
-      .company {
-        color: var(--accent-color);
-        font-weight: bold;
-      }
-      .date {
-        font-family: monospace;
-        font-size: 0.9rem;
-        color: var(--text-dim);
+      .pill {
+        background: #231d30;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 5px 15px rgba(212, 165, 255, 0.1);
       }
 
-      /* Buttons */
-      .btn {
-        border: 1px solid var(--accent-color);
-        color: var(--accent-color);
-        padding: 18px 34px;
+      .btn-glow {
+        padding: 16px 35px;
+        background: var(--gradient-fem);
+        border: none;
+        border-radius: 60px;
+        color: #000;
+        font-weight: 700;
         text-decoration: none;
-        border-radius: 4px;
         display: inline-block;
         transition: 0.3s;
-        font-family: monospace;
-        background: transparent;
+        box-shadow: 0 10px 30px rgba(251, 194, 235, 0.3);
       }
-      .btn:hover {
-        background: rgba(100, 255, 218, 0.1);
-        box-shadow: 0 10px 20px -10px var(--accent-color);
+      .btn-glow:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(251, 194, 235, 0.5);
       }
 
       footer {
+        padding: 50px 10%;
+        border-top: 1px solid rgba(212, 165, 255, 0.1);
         text-align: center;
-        padding: 40px;
-        color: var(--text-dim);
-        font-family: monospace;
+        color: var(--text-muted);
+      }
+
+      @media (max-width: 1024px) {
+        .bento-container {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: minmax(200px, auto);
+        }
+        .large,
+        .wide,
+        .tall {
+          grid-column: span 2;
+          grid-row: span 1;
+        }
+      }
+      @media (max-width: 600px) {
+        .bento-container {
+          grid-template-columns: 1fr;
+        }
+        .large,
+        .wide,
+        .tall {
+          grid-column: span 1;
+        }
       }
       @media (max-width: 768px) {
-        section {
-          padding: 60px 5%;
-        }
-        .nav-links {
-          display: none;
-        }
-        .stats-bar {
+        .role-head {
           flex-direction: column;
-          gap: 30px;
+          align-items: flex-start;
+          gap: 10px;
         }
       }
     </style>
   </head>
   <body>
-    <nav id="navbar">
-      <div class="logo">A.</div>
-      <ul class="nav-links">
-        <li><a href="#experience">/Experience</a></li>
-        <li><a href="#projects">/Projects</a></li>
-        <li><a href="#skills">/Arsenal</a></li>
-        <li><a href="#contact">/Contact</a></li>
-      </ul>
+    <!-- Custom Cursor Elements -->
+    <div id="custom-cursor"></div>
+
+    <div class="glow-blob"></div>
+    <div class="glow-blob"></div>
+    <div class="glow-blob"></div>
+    <div class="glow-blob"></div>
+
+    <nav>
+      <div class="logo">ALEENA JOSEPH</div>
+      <div style="display: flex; gap: 30px">
+        <a
+          href="#projects"
+          style="
+            text-decoration: none;
+            color: var(--text-bright);
+            font-size: 0.9rem;
+          "
+          >Portfolio</a
+        >
+        <a
+          href="#experience"
+          style="
+            text-decoration: none;
+            color: var(--text-bright);
+            font-size: 0.9rem;
+          "
+          >Career</a
+        >
+      </div>
     </nav>
 
     <header>
-      <div class="reveal">
-        <p class="hero-pre">Hi, my name is</p>
-        <h1 class="hero-name">Alan P G.</h1>
-        <h2 class="hero-title">I build & secure national-scale systems.</h2>
-        <p class="hero-desc">
-          Full-Stack Developer with 3+ years of experience at C-DAC. I
-          specialize in creating robust web architectures while maintaining a
-          heavy focus on Ethical Hacking and Cybersecurity for governmental
-          sectors.
+      <!-- Subtle floating orchid petals -->
+      <img
+        class="petal"
+        src="https://static.vecteezy.com/system/resources/thumbnails/060/585/917/small/stunning-orchid-flower-showcases-delicate-pink-petals-and-vibrant-details-embodying-beauty-and-elegance-in-nature-design-png.png"
+        alt=""
+      />
+      <img
+        class="petal"
+        src="https://thumbs.dreamstime.com/b/color-floral-plant-vector-transparent-background-delicate-flower-illustration-white-bouquet-drawn-banner-orchid-art-template-180993720.jpg"
+        alt=""
+      />
+      <img
+        class="petal"
+        src="https://static.vecteezy.com/system/resources/thumbnails/060/585/917/small/stunning-orchid-flower-showcases-delicate-pink-petals-and-vibrant-details-embodying-beauty-and-elegance-in-nature-design-png.png"
+        alt=""
+      />
+
+      <div class="hero-content reveal">
+        <span class="hero-tag">Full-Stack Engineer & Architect</span>
+        <h1 class="hero-name">
+          I build systems that <br /><span style="color: var(--accent-glow)"
+            >save lives.</span
+          >
+        </h1>
+        <p class="hero-sub">
+          Crafting high-availability emergency response ecosystems for the
+          National Disaster Management Authority and Ministry of Home Affairs.
         </p>
-        <a href="#projects" class="btn">View My Work</a>
+        <a href="#projects" class="btn-glow">Explore Mission Profile</a>
       </div>
     </header>
 
-    <section id="impact">
-      <div class="stats-bar reveal">
-        <div class="stat-item">
-          <h3>28+</h3>
-          <p>Indian States Served (ERSS)</p>
-        </div>
-        <div class="stat-item">
-          <h3>25,000+</h3>
-          <p>Annual Candidates Managed</p>
-        </div>
-        <div class="stat-item">
-          <h3>3+</h3>
-          <p>Years at C-DAC</p>
+    <!-- Mission Deployments -->
+    <h2 class="section-title reveal" id="projects">
+      Mission <span class="accent-text">Deployments</span>
+    </h2>
+    <section class="bento-container">
+      <div class="bento-item large reveal">
+        <span class="project-status">Live in 28 States</span>
+        <i class="fas fa-tower-broadcast"></i>
+        <h3>Next Gen ERSS (112 India)</h3>
+        <p>
+          The crown jewel of my engineering work. Developed a high-concurrency
+          Dispatching Station supporting 1,000+ simultaneous operators. I
+          architected the real-time event redispatch system and case-linking
+          logic across 37+ PSAPs nationwide.
+        </p>
+        <div style="margin-top: 20px">
+          <span class="stat-pill">WebSockets</span>
+          <span class="stat-pill">Redux Toolkit</span>
+          <span class="stat-pill">Scale</span>
         </div>
       </div>
-    </section>
-
-    <section id="experience">
-      <h2 class="reveal">Professional Journey</h2>
-
-      <div class="exp-card reveal">
-        <div
-          style="display: flex; justify-content: space-between; flex-wrap: wrap"
-        >
-          <div>
-            <h3>Project Engineer</h3>
-            <span class="company"
-              >C-DAC, Chennai | Ministry of Defence (MoD)</span
-            >
-          </div>
-          <span class="date">2024 - Present</span>
-        </div>
-        <ul style="margin-top: 15px; margin-left: 20px">
-          <li>Leading Secure SDLC for the Digital DGQA portal (MoD).</li>
-          <li>
-            Conducting deep-dive Vulnerability Remediation & RBAC
-            implementation.
-          </li>
-          <li>
-            Bridging high-performance React.js development with Ethical Hacking
-            standards.
-          </li>
-        </ul>
+      <div class="bento-item wide reveal">
+        <span class="project-status">SOP Compliant</span>
+        <i class="fas fa-biohazard"></i>
+        <h3>NDMA Call Responder</h3>
+        <p>
+          A mission-critical app for the National Disaster Management Authority.
+          Built to handle extreme-load disaster calls with strictly enforced SOP
+          workflows.
+        </p>
       </div>
-
-      <div class="exp-card reveal">
-        <div
-          style="display: flex; justify-content: space-between; flex-wrap: wrap"
-        >
-          <div>
-            <h3>Project Associate</h3>
-            <span class="company"
-              >C-DAC, Trivandrum | Ministry of Home Affairs (MHA)</span
-            >
-          </div>
-          <span class="date">2023 - 2024</span>
-        </div>
-        <ul style="margin-top: 15px; margin-left: 20px">
-          <li>Headed frontend for India 112 (ERSS) across 28+ states.</li>
-          <li>
-            Engineered real-time emergency dispatch systems using JWT & REST
-            APIs.
-          </li>
-          <li>
-            Optimized high-availability infrastructure using Apache and Nginx.
-          </li>
-        </ul>
+      <div class="bento-item tall reveal">
+        <i class="fas fa-bolt"></i>
+        <h3>Push-Notification Engine</h3>
+        <p>
+          Multi-state persistent alert system. Optimized to deliver emergency
+          alerts across platforms with near-zero latency using high-volume
+          queuing.
+        </p>
       </div>
-
-      <div class="exp-card reveal">
-        <div
-          style="display: flex; justify-content: space-between; flex-wrap: wrap"
-        >
-          <div>
-            <h3>Graduate Apprentice</h3>
-            <span class="company">KELTRON, Trivandrum</span>
-          </div>
-          <span class="date">2022 - 2023</span>
-        </div>
-        <p style="margin-top: 10px">
-          Customized enterprise ERP solutions and full-stack development using
-          Laravel (PHP).
+      <div class="bento-item reveal">
+        <span class="project-status">Live in 28 States</span>
+        <i class="fas fa-gauge-high"></i>
+        <h3>Dispatcher Dashboard</h3>
+        <p>
+          Real-time visual analytics for Police & Fire control rooms. 60% faster
+          decision making via instant status monitoring.
+        </p>
+      </div>
+      <div class="bento-item reveal">
+        <i class="fas fa-shield-halved"></i>
+        <h3>Security Suite</h3>
+        <p>
+          Implementation of RBAC and JWT-based authentication for state-level
+          data protection and integrity.
         </p>
       </div>
     </section>
 
-    <section id="projects" style="background: var(--secondary-bg)">
-      <h2 class="reveal">Mission-Critical Portals</h2>
-      <div class="skills-container reveal">
-        <div
-          class="skill-box"
-          style="text-align: left; border-left: 4px solid #ff4d4d"
-        >
-          <h3>Digital DGQA</h3>
-          <p
+    <!-- Experience -->
+    <section
+      id="experience"
+      style="padding: 100px 10%; background: rgba(255, 255, 255, 0.02)"
+    >
+      <h2 class="section-title reveal">The Professional Journey</h2>
+      <div class="exp-box">
+        <div class="exp-item reveal">
+          <div class="role-head">
+            <div>
+              <h3>Project Engineer</h3>
+              <p style="color: var(--accent-glow)">C-DAC, Thiruvananthapuram</p>
+            </div>
+            <span class="badge">09/2022 — PRESENT</span>
+          </div>
+          <p style="margin-bottom: 15px">
+            Leading the engineering of critical public safety infrastructure for
+            28+ Indian states.
+          </p>
+          <ul
             style="
-              color: var(--accent-color);
-              font-family: monospace;
-              font-size: 0.8rem;
+              color: var(--text-muted);
+              padding-left: 20px;
+              font-size: 0.95rem;
             "
           >
-            MINISTRY OF DEFENCE
-          </p>
-          <p style="margin-top: 10px">
-            A high-security portal integrating threat modeling and secure coding
-            standards to protect Defence digital assets.
-          </p>
+            <li>
+              Reduced API latency by <strong>60%</strong> using strategic Redis
+              caching and PostgreSQL query optimization.
+            </li>
+            <li>
+              Managing <strong>50,000+ daily emergency calls</strong> with
+              sub-100ms response times.
+            </li>
+            <li>
+              Developed WebSocket-driven sync for complex Redux state management
+              across 1,000+ concurrent users.
+            </li>
+            <li>
+              Achieved <strong>99.9% uptime</strong> across multi-state
+              production deployments.
+            </li>
+            <li>
+              Onboarded 400+ government officers on Next-Gen 112 system
+              workflows.
+            </li>
+          </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section id="credentials" style="padding: 100px 10%">
+      <h2 class="section-title reveal">Technical Arsenal</h2>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+        "
+      >
         <div
-          class="skill-box"
-          style="text-align: left; border-left: 4px solid var(--accent-color)"
-        >
-          <h3>ERSS - Pan India 112</h3>
-          <p
-            style="
-              color: var(--accent-color);
-              font-family: monospace;
-              font-size: 0.8rem;
-            "
-          >
-            MINISTRY OF HOME AFFAIRS
-          </p>
-          <p style="margin-top: 10px">
-            National emergency response system requiring 99.9% uptime and
-            real-time operational statistics for first responders.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2 class="reveal">Technical & Security Arsenal</h2>
-      <div class="skills-container reveal">
-        <div class="skill-box">
-          <i class="fab fa-react"></i>
-          <h3>Web Dev</h3>
-          <p>React.js, Next.js, Node.js, Laravel, Python</p>
-        </div>
-        <div class="skill-box">
-          <i class="fas fa-user-secret"></i>
-          <h3>Security</h3>
-          <p>Burp Suite, Nmap, Nessus, Wireshark, Splunk, Wazuh</p>
-        </div>
-        <div class="skill-box">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Methodology</h3>
-          <p>Secure SDLC, RBAC, OWASP Top 10</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="certifications" style="background: var(--secondary-bg)">
-      <h2 class="reveal">Credentials</h2>
-      <div class="skills-container reveal">
-        <div class="skill-box">
-          <h3>Ethical Hacking</h3>
-          <p>Cisco Networking Academy</p>
-        </div>
-        <div class="skill-box">
-          <h3>Web Application Security</h3>
-          <p>Testing & Remediation Certs</p>
-        </div>
-        <div class="skill-box">
-          <h3>Software Security</h3>
-          <p>Testing & Remediation Certs</p>
-        </div>
-        <div class="skill-box">
-          <h3>B.E. CSE</h3>
-          <p>CGPA: 8.3/10</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div style="text-align: center" class="reveal">
-        <h2>Get In Touch</h2>
-        <p style="margin-bottom: 30px">
-          Based in Kerala, India. Open to security-focused development roles.
-        </p>
-        <a href="mailto:alangladis1@gmail.com" class="btn">Send an Email</a>
-        <p
+          class="reveal"
           style="
-            margin-top: 25px;
-            font-family: monospace;
-            color: var(--accent-color);
+            background: var(--bg-panel);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 165, 255, 0.1);
           "
         >
-          +91 7356872611
-        </p>
+          <h3>Frontend & Architecture</h3>
+          <div class="skill-group">
+            <span class="pill">React.js</span>
+            <span class="pill">Next.js</span>
+            <span class="pill">Redux Toolkit</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">Material UI</span>
+            <span class="pill">WebSockets</span>
+          </div>
+        </div>
+        <div
+          class="reveal"
+          style="
+            background: var(--bg-panel);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 165, 255, 0.1);
+          "
+        >
+          <h3>Backend & Data</h3>
+          <div class="skill-group">
+            <span class="pill">Node.js</span>
+            <span class="pill">Express</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">Redis</span>
+            <span class="pill">JWT Auth</span>
+            <span class="pill">REST APIs</span>
+          </div>
+        </div>
+        <div
+          class="reveal"
+          style="
+            background: var(--bg-panel);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 165, 255, 0.1);
+          "
+        >
+          <h3>Certifications</h3>
+          <ul
+            style="
+              color: var(--text-muted);
+              list-style: none;
+              font-size: 0.9rem;
+            "
+          >
+            <li style="margin-bottom: 8px">
+              <i
+                class="fas fa-certificate"
+                style="color: var(--accent-glow)"
+              ></i>
+              Google Cloud: Core Infrastructure
+            </li>
+            <li>
+              <i
+                class="fas fa-certificate"
+                style="color: var(--accent-glow)"
+              ></i>
+              C-DAC: Software Security
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <footer><p>Alan P G &bull; 2026 &bull; Secure SDLC Advocate</p></footer>
+    <!-- Contact -->
+    <section id="contact" style="padding: 100px 10%; text-align: center">
+      <div class="reveal">
+        <h2
+          style="
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+          "
+        >
+          Let's Build the <br />Future Together
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px">
+          Currently based in Kerala, India · Available for high-impact
+          collaborations.
+        </p>
+        <a
+          href="mailto:alee66joseph@gmail.com"
+          class="btn-glow"
+          style="font-size: 1.2rem"
+          >Get In Touch</a
+        >
+        <div style="margin-top: 40px; font-size: 1.1rem">
+          <p>
+            <i class="fas fa-phone-alt" style="color: var(--accent-glow)"></i>
+            +91 8606356837
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2026 Aleena Joseph · B.E. Computer Science · Crafted with
+        Elegance
+      </p>
+    </footer>
 
     <script>
-      const sr = ScrollReveal({
-        origin: "bottom",
-        distance: "60px",
-        duration: 1000,
-        delay: 200,
-        reset: false,
+      // Custom Cursor & Trail
+      const cursor = document.getElementById("custom-cursor");
+      const trails = [];
+
+      document.addEventListener("mousemove", (e) => {
+        // Move main cursor dot
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+
+        // Create trail particle
+        const particle = document.createElement("div");
+        particle.classList.add("trail-particle");
+        particle.style.left = `${e.clientX}px`;
+        particle.style.top = `${e.clientY}px`;
+        document.body.appendChild(particle);
+
+        trails.push(particle);
+
+        // Remove old particles after animation
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 1000);
       });
-      sr.reveal(".reveal", { interval: 100 });
-      window.addEventListener("scroll", () => {
-        const nav = document.getElementById("navbar");
-        nav.style.height = window.scrollY > 50 ? "70px" : "80px";
-        nav.style.background =
-          window.scrollY > 50
-            ? "rgba(10, 25, 47, 0.95)"
-            : "rgba(10, 25, 47, 0.85)";
+
+      // ScrollReveal
+      ScrollReveal().reveal(".reveal", {
+        delay: 200,
+        distance: "50px",
+        origin: "bottom",
+        duration: 1000,
+        interval: 100,
       });
     </script>
   </body>
